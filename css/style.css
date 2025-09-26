@@ -132,6 +132,66 @@ h1,h2,h3 {
     }
 }
 
+.btn-flutuante {
+    /* 1. Posicionamento Fixo: Não se move com a rolagem */
+    position: fixed;
+    
+    /* 2. Definir a localização (canto inferior direito) */
+    bottom: 20px; /* 20 pixels acima da borda inferior */
+    left: 20px;  /* 20 pixels à esquerda da borda direita */
+
+    /* 3. Estilo e Aparência */
+    background-color: #e4d47c; /* Exemplo de cor verde (como o WhatsApp) */
+    color: white; /* Cor do texto */
+    padding: 15px 20px;
+    border-radius: 50px; /* Deixa ele arredondado como um "pílula" */
+    text-decoration: none; /* Remove o sublinhado, já que é um <a> */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    z-index: 1000; /* Garante que ele fique acima de outros elementos */
+    font-family: sans-serif; 
+    text-decoration: none;
+}
+
+.btn-flutuante1 {
+    /* 1. Posicionamento Fixo: Não se move com a rolagem */
+    position: fixed;
+    
+    /* 2. Definir a localização (canto inferior direito) */
+    bottom: 20px; /* 20 pixels acima da borda inferior */
+    right: 20px;  /* 20 pixels à esquerda da borda direita */
+
+    /* 3. Estilo e Aparência */
+    background-color: #e4d47c; /* Exemplo de cor verde (como o WhatsApp) */
+    color: white; /* Cor do texto */
+    padding: 15px 20px;
+    border-radius: 50px; /* Deixa ele arredondado como um "pílula" */
+    text-decoration: none; /* Remove o sublinhado, já que é um <a> */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    z-index: 1000; /* Garante que ele fique acima de outros elementos */
+    font-family: sans-serif; 
+    text-decoration: none;
+}
+
+/* 4. Efeito ao passar o mouse (Opcional) */
+.btn-flutuante:hover {
+    background-color: #5d7957; /* Escurece um pouco ao interagir */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-flutuante1:hover {
+    background-color: #5d7957; /* Escurece um pouco ao interagir */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-link {
+    text-decoration: none;
+    color: rgb(31, 43, 28);
+}
+
+.btn-link:hover {
+    color: yellow;
+}
+
 .principal {
     width: 100%;
     margin: 0 auto;
