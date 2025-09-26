@@ -1,0 +1,373 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #242424;
+    font-family: sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+h1,h2,h3 {
+    font-weight: 700;
+    color: #242222;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fixa o elemento na tela */
+    top: 0;          /* Alinha ao topo da tela (0 pixels do topo) */
+    left: 0;         /* Alinha à esquerda da tela */
+    width: 98%;     /* Garante que ocupe a largura total */
+    z-index: 1000;   /* Garante que fique acima de outros elementos */
+}
+
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.menu li a:hover {
+    background-color: #575757;
+}
+
+/* Esconde o checkbox. Ele é usado apenas para a lógica */
+#menu-toggle {
+    display: none;
+}
+
+/* Oculta o ícone hamburguer no desktop */
+.hamburguer {
+    display: none; 
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+}
+
+.hamburguer span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s linear;
+}
+
+/* --- Responsividade e Lógica do Menu Hamburguer --- */
+
+@media (max-width: 768px) {
+    /* Mostra o ícone no mobile */
+    .hamburguer {
+        display: flex;
+        z-index: 2; /* Para ficar por cima do menu */
+    }
+
+    /* Oculta o menu principal no mobile */
+    .menu {
+        position: absolute;
+        top: 60px; /* Ajuste para logo abaixo da navbar */
+        left: 0;
+        width: 100%;
+        height: 0; /* Começa fechado */
+        background-color: #333;
+        overflow: hidden; /* Esconde o conteúdo que não cabe */
+        transition: height 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .menu li a {
+        padding: 15px 20px;
+        text-align: center;
+        border-bottom: 1px solid #444;
+    }
+    
+    /* ************* O SEGREDO ESTÁ AQUI ************* */
+    /* Quando o checkbox invisível estiver CHECADO... */
+    #menu-toggle:checked ~ .menu {
+        /* ...expanda a altura do menu, mostrando-o! */
+        height: 200px; /* Ajuste para a altura total do seu menu */
+    }
+    
+    /* Estilizando o ícone hamburguer para virar um "X" quando aberto */
+    #menu-toggle:checked ~ .hamburguer span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    
+    #menu-toggle:checked ~ .hamburguer span:nth-child(2) {
+        opacity: 0; /* Esconde o palito do meio */
+    }
+    
+    #menu-toggle:checked ~ .hamburguer span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+}
+
+.principal {
+    width: 100%;
+    margin: 0 auto;
+}
+
+main {
+    display: block;
+    background-color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px;
+    line-height: 1.5em;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+section.module p {
+    margin-bottom: 40px;
+}
+
+section.module:last-child {
+    margin-bottom: 0;
+}
+
+section.module h2 {
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+section.module.content {
+    padding: 40px 0;
+    background: #ece7d5;
+}
+
+section.module.parallax {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh !important;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section.module.parallax:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 8;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100% );
+}
+
+/* --- Estilo Principal do Card --- */
+.card {
+    /* Dimensões */
+    width: 300px; /* Largura fixa (pode usar max-width) */
+    
+    /* Aparência */
+    background-color: #fff;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Garante que a imagem se ajuste ao border-radius */
+    
+    /* Transição para efeito hover */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efeito de elevação ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px); /* Move o card um pouco para cima */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da Imagem */
+.card-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Remove o espaço extra abaixo da imagem */
+}
+
+/* Estilo do Conteúdo (Texto e Botão) */
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.4em;
+}
+
+.card-description {
+    color: #554b4b;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Estilo do Botão */
+.card-button {
+    display: inline-block;
+    background-color: #6edb80; /* Cor primária */
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.card-button:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+}
+
+section.module.parallax-1 {
+    background-image: url("../img/seção\ 1.jpg");
+}
+
+section.module.parallax-2 {
+    background-image: url("../img/seção\ 2.jpg");
+}
+
+section.module.parallax-3 {
+    background-image: url("../img/seção\ 3.jpg");
+}
+
+section.module.parallax h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 78px;
+    z-index: 50;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo Base do Footer */
+.main-footer {
+    background-color: #222; /* Fundo escuro */
+    color: #fff; /* Texto claro */
+    padding-top: 40px;
+    font-family: Arial, sans-serif;
+}
+
+/* Container que centraliza e organiza as colunas */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    display: flex; /* Habilita Flexbox para as colunas */
+    flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+    justify-content: space-between; /* Espaço entre as colunas */
+}
+
+/* Estilo para cada seção/coluna */
+.footer-section {
+    flex-basis: 30%; /* Cada coluna ocupa cerca de 30% no desktop */
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    border-bottom: 2px solid #ffc107; /* Linha de destaque para o título */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Estilo dos Links e Texto */
+.footer-section a {
+    color: #ddd; /* Cor dos links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #ffc107; /* Cor ao passar o mouse */
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+/* Estilo para Redes Sociais (exemplo simples) */
+.social-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #555;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Barra inferior de Copyright */
+.footer-bottom {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+}
+
+/* Responsividade: Telas menores que 768px */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Colunas empilham verticalmente */
+    }
+
+    .footer-section {
+        flex-basis: 100%; /* Cada coluna ocupa a largura total */
+        text-align: center; /* Centraliza o texto nas colunas */
+    }
+
+    .footer-section h4 {
+        border-bottom: none;
+    }
+}
