@@ -383,6 +383,14 @@ section.module.parallax h1 {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
 /* Estilo Base do Footer */
 .main-footer {
     background-color: #222; /* Fundo escuro */
@@ -475,3 +483,4 @@ section.module.parallax h1 {
         border-bottom: none;
     }
 }
+
